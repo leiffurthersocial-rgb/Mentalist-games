@@ -1,15 +1,13 @@
-// Dashboard: overall stats panel + a card per module.
+// Dashboard: a card per module.
 
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppState';
 import { MODULES } from '../lib/registry';
-import { overallStats } from '../lib/stats';
-import { Panel, Pill, Stat } from '../components/ui';
-import { cx, formatDuration, relativeDay } from '../lib/utils';
+import { Pill } from '../components/ui';
+import { cx, relativeDay } from '../lib/utils';
 
 export default function Home() {
   const { data } = useApp();
-  const stats = overallStats(data);
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 pb-16 pt-8">
@@ -23,29 +21,6 @@ export default function Home() {
           skills behind the mind-reading act. A quiet study, not an arcade.
         </p>
       </section>
-
-      {/* Overall stats */}
-      <Panel className="mb-8 animate-fade-up p-5">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <Stat value={stats.totalSessions} label="sessions" />
-          <Stat
-            value={
-              <span className="inline-flex items-center gap-1">
-                {stats.streak}
-                {stats.streak > 0 && <span className="text-lg">🔥</span>}
-              </span>
-            }
-            label="day streak"
-          />
-          <Stat value={formatDuration(stats.totalTimeMs)} label="time practised" />
-          <Stat value={`${stats.modulesPracticed}/${MODULES.length}`} label="modules tried" />
-        </div>
-        {stats.longestStreak > 0 && (
-          <p className="mt-4 text-center text-xs text-ink-400">
-            Longest streak: {stats.longestStreak} days · Practise any module daily to keep the flame.
-          </p>
-        )}
-      </Panel>
 
       {/* Daily routine CTA */}
       <Link
