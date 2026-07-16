@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased;
+  font-feature-settings: 'kern', 'liga';
+}
+
+.dark body {
+  @apply bg-ink-950 text-ink-100;
+}
+
+/* Focus ring: visible, calm, keyboard-friendly. */
+:focus-visible {
+  outline: 2px solid theme('colors.brass.400');
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom range slider styling for the confidence + timer controls. */
+input[type='range'] {
+  @apply appearance-none h-1.5 rounded-full bg-ink-200 dark:bg-ink-700;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-brass-500 cursor-pointer;
+  border: 2px solid theme('colors.ink.50');
+}
+.dark input[type='range']::-webkit-slider-thumb {
+  border-color: theme('colors.ink.900');
+}
+input[type='range']::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-brass-500 cursor-pointer border-0;
+}
+
+/* Subtle entrance for cards / panels. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+/* Thin, unobtrusive scrollbars. */
+* {
+  scrollbar-width: thin;
+}
