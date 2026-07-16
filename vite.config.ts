@@ -2,11 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-// `base` is set for GitHub Pages project-page deployment (served from
-// https://<user>.github.io/<repo>/). Override with the BASE_PATH env var if
-// your repository name differs, e.g. BASE_PATH=/my-fork/ npm run build.
-// For a user/organization page (served from the domain root) set BASE_PATH=/.
-const base = process.env.BASE_PATH ?? '/Mentalist-games/';
+// Defaults to the domain root, which is correct for Vercel (and any host that
+// serves the app from its own domain). GitHub Pages project pages are served
+// from a /<repo>/ subpath instead — the deploy workflow overrides this via the
+// BASE_PATH env var, e.g. BASE_PATH=/my-repo/ npm run build.
+const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   base,
