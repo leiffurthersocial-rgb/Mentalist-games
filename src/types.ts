@@ -19,7 +19,11 @@ export type ModuleId =
   | 'speed-matrix'
   | 'fermi-estimation'
   | 'lie-spotter'
-  | 'pattern-sequences';
+  | 'pattern-sequences'
+  | 'n-back'
+  | 'syllogisms'
+  | 'analogies'
+  | 'mental-math';
 
 /** One completed practice attempt for any module. */
 export interface SessionRecord {
@@ -97,7 +101,13 @@ export interface ModuleMeta {
   tagline: string;
   /** The real-world skill this module trains. */
   skill: string;
-  category: 'Observation' | 'Memory' | 'Reasoning' | 'People-reading' | 'Problem-solving';
+  category:
+    | 'Observation'
+    | 'Memory'
+    | 'Reasoning'
+    | 'People-reading'
+    | 'Problem-solving'
+    | 'Cognitive';
   /** Included in the core daily routine when true. */
   core: boolean;
   /** "Why this works" blurb + recommended reading. */

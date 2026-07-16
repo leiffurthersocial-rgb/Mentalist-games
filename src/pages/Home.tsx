@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppState';
 import { MODULES } from '../lib/registry';
 import { Pill } from '../components/ui';
-import { cx, relativeDay } from '../lib/utils';
+import { cx } from '../lib/utils';
 
 export default function Home() {
   const { data } = useApp();
@@ -17,8 +17,13 @@ export default function Home() {
           Train like a mentalist
         </h1>
         <p className="mx-auto mt-2 max-w-xl text-sm text-ink-500 dark:text-ink-400">
-          Thirteen drills for observation, memory, calibrated reasoning, and reading people — the
-          real skills behind the mind-reading act. A quiet study, not an arcade.
+          Seventeen drills for observation, memory, reasoning, cognitive ability, and reading
+          people — the real skills behind the mind-reading act. A quiet study, not an arcade.
+        </p>
+        <p className="mx-auto mt-3 max-w-md text-xs text-ink-400">
+          Every game scores you out of 100, calibrated so that{' '}
+          <span className="text-brass-600 dark:text-brass-300">50 is a typical adult's result</span>{' '}
+          and 90+ is exceptional — each game explains its own baseline.
         </p>
       </section>
 
@@ -67,9 +72,9 @@ export default function Home() {
 
               <div className="mt-auto flex items-center gap-2 pt-4 text-xs">
                 <Pill tone={p ? 'good' : 'neutral'}>
-                  {p ? `Best ${p.bestScore}` : 'Not started'}
+                  {p ? `Best ${p.bestScore} / 100` : 'Not started'}
                 </Pill>
-                <span className="text-ink-400">{relativeDay(p?.lastPracticed ?? null)}</span>
+                {p && <span className="text-ink-400">50 = average</span>}
               </div>
             </Link>
           );

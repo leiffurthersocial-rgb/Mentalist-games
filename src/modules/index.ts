@@ -21,4 +21,8 @@ export const MODULE_COMPONENTS: Record<ModuleId, ModuleComponent> = {
   'fermi-estimation': lazy(() => import('./fermi-estimation/FermiEstimation')),
   'lie-spotter': lazy(() => import('./lie-spotter/LieSpotter')),
   'pattern-sequences': lazy(() => import('./pattern-sequences/PatternSequences')),
+  'n-back': lazy(() => import('./n-back/NBack')),
+  'syllogisms': lazy(() => import('./syllogisms/Syllogisms')),
+  'analogies': lazy(() => import('./analogies/Analogies')),
+  'mental-math': lazy(() => import('./mental-math/MentalMath')),
 };

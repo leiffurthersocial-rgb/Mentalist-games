@@ -7,11 +7,13 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { sample } from '../../lib/utils';
 import { FERMI_QUESTIONS, FermiQuestion } from './data';
 
 const META = getModule('fermi-estimation')!;
-const ROUND_SIZE = 8;
+const ROUND_SIZE = 10;
 type Phase = 'idle' | 'play' | 'result';
 
 interface Answered {
@@ -56,7 +58,7 @@ export default function FermiEstimation() {
     setHigh('');
     if (index + 1 >= queue.length) {
       const insideCount = nextAnswers.filter((a) => a.inside).length;
-      const score = Math.round((insideCount / queue.length) * 100);
+      const score = normalizeScore('fermi-estimation', insideCount / queue.length);
       recordSession('fermi-estimation', score, Date.now() - startedAt, {
         inside: insideCount,
         total: queue.length,
@@ -69,13 +71,14 @@ export default function FermiEstimation() {
 
   const insideCount = answers.filter((a) => a.inside).length;
   const insideRate = answers.length ? Math.round((insideCount / answers.length) * 100) : 0;
-  const finalScore = queue.length ? Math.round((insideCount / queue.length) * 100) : 0;
+  const insidePercent = queue.length ? Math.round((insideCount / queue.length) * 100) : 0;
+  const finalScore = queue.length ? normalizeScore('fermi-estimation', insideCount / queue.length) : 0;
 
-  function calibrationNote(rate: number) {
-    if (rate >= 85 && rate <= 100 && insideCount / queue.length <= 0.95)
-      return 'Beautifully calibrated — close to the 90% target.';
-    if (rate === 100) return 'You caught them all — but your ranges may be too wide. Try tightening.';
-    if (rate >= 60) return 'A bit overconfident — widen your ranges to catch ~90%.';
+  // Feedback is about the actual hit-rate versus the 90% target, not the score.
+  function calibrationNote(pct: number) {
+    if (pct >= 85 && pct <= 95) return 'Beautifully calibrated — right around the 90% target.';
+    if (pct === 100) return 'You caught them all — but your ranges may be too wide. Try tightening.';
+    if (pct >= 60) return 'A bit overconfident — widen your ranges to catch ~90%.';
     return 'Strongly overconfident — your intervals are far too narrow. Widen them a lot.';
   }
 
@@ -170,8 +173,9 @@ export default function FermiEstimation() {
               }
             />
             <p className="mt-4 text-center text-sm text-brass-600 dark:text-brass-300">
-              {calibrationNote(finalScore)}
+              {calibrationNote(insidePercent)}
             </p>
+            <ScoreMeaning moduleId="fermi-estimation" score={finalScore} />
           </Panel>
 
           <Panel className="p-5">

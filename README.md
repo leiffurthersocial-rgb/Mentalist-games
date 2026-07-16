@@ -33,12 +33,33 @@ Each module maps to a genuine, transferable skill:
 | 📐 **Fermi Estimation** | Quantitative estimation & interval calibration |
 | 🤥 **Lie Spotter** | Statement analysis & verbal deception cues |
 | 🧮 **Pattern Sequences** | Inductive reasoning & rule inference |
+| 🎛️ **N-Back** | Fluid working memory & sustained attention |
+| ➗ **Logical Validity** | Deductive logic & resisting belief bias |
+| 🔗 **Analogies** | Verbal reasoning & relational thinking |
+| ⚡ **Mental Math Sprint** | Numeracy & rapid mental calculation |
 
 Every module carries a short **"why this works"** note and a recommended book
 (Konnikova's *Mastermind*, Foer's *Moonwalking with Einstein*, Tetlock's
 *Superforecasting*, Kahneman's *Thinking, Fast and Slow*, Ekman's *Emotions
 Revealed*, Hubbard's *How to Measure Anything*, Meyer's *Liespotting*,
-Rowland's cold-reading book, and more).
+Benjamin's *Secrets of Mental Math*, Rowland's cold-reading book, and more).
+
+### Scoring: what a number means
+
+Every game reports a score out of 100, but it is **not** raw accuracy. Each
+game is calibrated against a human baseline so the number is comparable across
+very different tasks:
+
+- **50 ≈ a typical, untrained adult's result**
+- **90+ ≈ strong, well-practised performance**
+- **0 ≈ pure guessing / the task floor**
+
+That's why a game where nobody could ever get 50% raw (lie detection, memory
+span measured in items, 90%-confidence intervals) still centres a normal result
+at 50 — the point system bakes in each game's real-world baseline, and every
+result screen explains its own. Your progress records only your **best score**
+per game; the app deliberately does not track how often or how long you
+practise.
 
 ### The centrepiece: the Calibration Journal
 
@@ -53,8 +74,9 @@ separates good forecasters from confident ones.
 
 ## Features
 
-- **13 fully-playable modules**, each seeded with content so there's zero setup.
-- **Scoring, best scores, and per-emotion / calibration breakdowns.**
+- **17 fully-playable modules**, each seeded with content so there's zero setup.
+- **Human-baselined scoring** (50 = average) with best scores, plus per-emotion
+  and calibration breakdowns.
 - **Daily streak system** 🔥 and a **daily routine** that queues one short session
   from each core skill.
 - **Per-module settings** (difficulty, timers) that persist.

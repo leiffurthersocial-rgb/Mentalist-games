@@ -4,9 +4,11 @@
 
 import { useState } from 'react';
 import { ModuleShell } from '../../components/ModuleShell';
-import { Button, Panel, Pill } from '../../components/ui';
+import { Button, Panel, Pill, ScoreBanner } from '../../components/ui';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
 import { randomOf } from '../../lib/utils';
 import puzzlesRaw from './puzzles.json';
 
@@ -22,7 +24,7 @@ interface Puzzle {
 }
 const PUZZLES = puzzlesRaw as Puzzle[];
 
-type Phase = 'solving' | 'revealed';
+type Phase = 'solving' | 'revealed' | 'scored';
 
 export default function AbductivePuzzles() {
   const { recordSession } = useApp();
@@ -32,6 +34,7 @@ export default function AbductivePuzzles() {
   const [draft, setDraft] = useState('');
   const [showHint, setShowHint] = useState(false);
   const [startedAt, setStartedAt] = useState(() => Date.now());
+  const [lastScore, setLastScore] = useState(0);
 
   const canReveal = theories.length >= MIN_THEORIES;
 
@@ -48,15 +51,18 @@ export default function AbductivePuzzles() {
   }
 
   function selfRate(gotIt: boolean) {
-    // Score rewards generating many theories AND matching the intended answer.
-    const breadth = Math.min(theories.length, 5) / 5; // up to 100% for 5 theories
-    const score = Math.round((gotIt ? 0.6 : 0) * 100 + breadth * 40);
+    // Raw performance rewards generating many theories AND reaching the best
+    // one; breadth alone (without the answer) still earns partial credit.
+    const breadth = Math.min(theories.length, 5) / 5; // up to 1.0 at 5 theories
+    const raw = (gotIt ? 0.6 : 0) + breadth * 0.4;
+    const score = normalizeScore('abductive-puzzles', raw);
+    setLastScore(score);
     recordSession('abductive-puzzles', score, Date.now() - startedAt, {
       puzzle: puzzle.id,
       theories: theories.length,
       gotIt,
     });
-    nextPuzzle();
+    setPhase('scored');
   }
 
   function nextPuzzle() {
@@ -187,6 +193,26 @@ export default function AbductivePuzzles() {
                 </Button>
               </div>
             </Panel>
+          </>
+        )}
+
+        {phase === 'scored' && (
+          <>
+            <Panel className="border-emerald-500/40 bg-emerald-500/5 p-5">
+              <h4 className="mb-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                The intended best explanation
+              </h4>
+              <p className="text-ink-800 dark:text-ink-100">{puzzle.best}</p>
+            </Panel>
+            <Panel className="p-6">
+              <ScoreBanner score={lastScore} />
+              <ScoreMeaning moduleId="abductive-puzzles" score={lastScore} />
+            </Panel>
+            <div className="flex justify-center">
+              <Button size="lg" onClick={nextPuzzle}>
+                Next puzzle →
+              </Button>
+            </div>
           </>
         )}
       </div>

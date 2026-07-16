@@ -8,6 +8,8 @@ import { TimerRing } from '../../components/TimerRing';
 import { useApp } from '../../context/AppState';
 import { useCountdown } from '../../lib/useCountdown';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx } from '../../lib/utils';
 import { makeRound } from './objects';
 
@@ -67,9 +69,10 @@ export default function KimsGame() {
       else falsePos += 1;
     });
     // Accuracy rewards true hits and penalises false positives, normalised to
-    // the number of objects that were actually present.
-    const raw = (hits - falsePos) / preset.count;
-    const score = Math.max(0, Math.round(raw * 100));
+    // the number of objects that were actually present, then mapped to the
+    // human-referenced 0–100 scale (50 = average).
+    const rawAcc = Math.max(0, (hits - falsePos) / preset.count);
+    const score = normalizeScore('kims-game', rawAcc);
     setResult({ score, hits, falsePos });
     setPhase('result');
     recordSession('kims-game', score, Date.now() - startedAt, {
@@ -190,6 +193,7 @@ export default function KimsGame() {
                 </div>
               }
             />
+            <ScoreMeaning moduleId="kims-game" score={result.score} />
           </Panel>
           <Panel className="p-5">
             <h3 className="mb-3 text-sm font-medium text-ink-500 dark:text-ink-400">

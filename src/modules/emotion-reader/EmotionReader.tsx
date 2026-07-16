@@ -9,11 +9,13 @@ import { TimerRing } from '../../components/TimerRing';
 import { useApp } from '../../context/AppState';
 import { useCountdown } from '../../lib/useCountdown';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, sample } from '../../lib/utils';
 import { EMOTIONS, EMOTION_EMOJI, Emotion, STIMULI, Stimulus } from './data';
 
 const META = getModule('emotion-reader')!;
-const ROUND_SIZE = 8;
+const ROUND_SIZE = 10;
 const PER_QUESTION_SECONDS = 8;
 
 type Phase = 'idle' | 'play' | 'result';
@@ -66,7 +68,7 @@ export default function EmotionReader() {
   function finishRound(finalResults: { stim: Stimulus; answer: Emotion | null }[]) {
     setPhase('result');
     const correct = finalResults.filter((r) => r.answer === r.stim.emotion).length;
-    const score = Math.round((correct / queue.length) * 100);
+    const score = normalizeScore('emotion-reader', correct / queue.length);
     recordSession('emotion-reader', score, Date.now() - startedAt, { round: queue.length });
 
     // Fold per-emotion tallies into persistent stats for the blind-spot chart.
@@ -87,7 +89,7 @@ export default function EmotionReader() {
   useEffect(() => () => clearTimeout(advanceRef.current), []);
 
   const correctCount = results.filter((r) => r.answer === r.stim.emotion).length;
-  const score = queue.length ? Math.round((correctCount / queue.length) * 100) : 0;
+  const score = queue.length ? normalizeScore('emotion-reader', correctCount / queue.length) : 0;
 
   return (
     <ModuleShell meta={META}>
@@ -152,6 +154,7 @@ export default function EmotionReader() {
               score={score}
               detail={<Stat value={`${correctCount}/${queue.length}`} label="correct" />}
             />
+            <ScoreMeaning moduleId="emotion-reader" score={score} />
           </Panel>
           <BlindSpots data={data} />
           <div className="flex justify-center gap-3">

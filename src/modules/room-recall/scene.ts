@@ -88,5 +88,5 @@ export function generateScene(): Scene {
     ),
   ];
 
-  return { lines, tableObjects, questions: shuffle(questions).slice(0, 6) };
+  return { lines, tableObjects, questions: shuffle(questions).slice(0, 8) };
 }

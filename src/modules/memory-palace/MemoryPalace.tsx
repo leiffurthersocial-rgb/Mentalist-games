@@ -7,6 +7,8 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, Pill, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, formatDuration, uid } from '../../lib/utils';
 import { MemoryPalace as Palace } from '../../types';
 import { Card, fullDeck, shuffleDeck } from './cards';
@@ -95,7 +97,9 @@ function Trainer() {
   }
 
   const correctPositions = recall.filter((c, i) => sequence[i]?.id === c.id).length;
-  const score = Math.round((correctPositions / count) * 100);
+  const rawAcc = count > 0 ? correctPositions / count : 0;
+  const score = normalizeScore('memory-palace', rawAcc);
+  const perfect = correctPositions === count;
 
   function submit() {
     const duration = Date.now() - startedAt;
@@ -103,7 +107,7 @@ function Trainer() {
     setPhase('result');
     recordSession('memory-palace', score, duration, { count, speedMs });
     // Track fastest *perfect* full-deck run.
-    if (count === 52 && score === 100) {
+    if (count === 52 && perfect) {
       if (fastestMs === 0 || duration < fastestMs) {
         setSetting('memory-palace', 'fastestDeckMs', duration);
       }
@@ -252,7 +256,8 @@ function Trainer() {
                 </div>
               }
             />
-            {count === 52 && score === 100 && (
+            <ScoreMeaning moduleId="memory-palace" score={score} />
+            {count === 52 && perfect && (
               <p className="mt-4 text-center text-sm text-brass-600 dark:text-brass-300">
                 🏅 Perfect full deck! {elapsedMs <= fastestMs || fastestMs === elapsedMs
                   ? 'A new personal best.'

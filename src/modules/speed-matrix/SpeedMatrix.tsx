@@ -7,6 +7,8 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, Pill, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, sample } from '../../lib/utils';
 
 const META = getModule('speed-matrix')!;
@@ -86,7 +88,7 @@ export default function SpeedMatrix() {
       setFailed(true);
       setPhase('feedback');
       const clearedCount = count - START_N; // fully cleared rounds
-      const score = Math.min(100, Math.max(0, (count - 1) * 9));
+      const score = normalizeScore('speed-matrix', count - 1);
       recordSession('speed-matrix', score, Date.now() - startedAt, {
         reached: count,
         roundsCleared: clearedCount,
@@ -96,7 +98,7 @@ export default function SpeedMatrix() {
   }
 
   const reached = count - 1;
-  const finalScore = Math.min(100, Math.max(0, reached * 9));
+  const finalScore = normalizeScore('speed-matrix', reached);
 
   return (
     <ModuleShell meta={META}>
@@ -206,11 +208,7 @@ export default function SpeedMatrix() {
               score={finalScore}
               detail={<Stat value={reached} label="numbers reached" />}
             />
-            <p className="mt-4 text-center text-sm text-ink-500 dark:text-ink-400">
-              {reached >= 10
-                ? 'Remarkable spatial capture — chimp-champion territory.'
-                : 'Try to take a single mental snapshot rather than reading tile by tile.'}
-            </p>
+            <ScoreMeaning moduleId="speed-matrix" score={finalScore} />
           </Panel>
           <div className="flex justify-center">
             <Button onClick={begin}>Again</Button>

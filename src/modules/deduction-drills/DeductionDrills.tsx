@@ -7,11 +7,13 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, sample } from '../../lib/utils';
 import { DRILLS, Drill } from './data';
 
 const META = getModule('deduction-drills')!;
-const ROUND_SIZE = 5;
+const ROUND_SIZE = 6;
 type Phase = 'idle' | 'conclude' | 'evidence' | 'reveal' | 'result';
 
 export default function DeductionDrills() {
@@ -51,7 +53,7 @@ export default function DeductionDrills() {
 
   function next() {
     if (index + 1 >= queue.length) {
-      const finalPct = Math.round((score / (queue.length * 2)) * 100);
+      const finalPct = normalizeScore('deduction-drills', score / (queue.length * 2));
       recordSession('deduction-drills', finalPct, Date.now() - startedAt, {
         drills: queue.length,
       });
@@ -64,7 +66,7 @@ export default function DeductionDrills() {
     setPhase('conclude');
   }
 
-  const finalPct = queue.length ? Math.round((score / (queue.length * 2)) * 100) : 0;
+  const finalPct = queue.length ? normalizeScore('deduction-drills', score / (queue.length * 2)) : 0;
 
   return (
     <ModuleShell meta={META}>
@@ -210,6 +212,7 @@ export default function DeductionDrills() {
               score={finalPct}
               detail={<Stat value={`${score}/${queue.length * 2}`} label="points" />}
             />
+            <ScoreMeaning moduleId="deduction-drills" score={finalPct} />
           </Panel>
           <div className="flex justify-center">
             <Button onClick={begin}>Again</Button>

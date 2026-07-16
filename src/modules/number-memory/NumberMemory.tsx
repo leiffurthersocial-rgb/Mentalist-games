@@ -7,6 +7,8 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, Pill, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx } from '../../lib/utils';
 
 const META = getModule('number-memory')!;
@@ -71,14 +73,14 @@ export default function NumberMemory() {
     } else {
       // Reached span = length; score rewards the longest length cleared.
       const cleared = length - 1;
-      const score = Math.min(100, Math.max(0, cleared * 10));
+      const score = normalizeScore('number-memory', cleared);
       recordSession('number-memory', score, Date.now() - startedAt, { span: cleared });
       window.setTimeout(() => setPhase('result'), 300);
     }
   }
 
   const clearedSpan = length - 1;
-  const finalScore = Math.min(100, Math.max(0, clearedSpan * 10));
+  const finalScore = normalizeScore('number-memory', clearedSpan);
 
   return (
     <ModuleShell meta={META}>
@@ -163,13 +165,7 @@ export default function NumberMemory() {
               score={finalScore}
               detail={<Stat value={clearedSpan} label="digit span reached" />}
             />
-            <p className="mt-4 text-center text-sm text-ink-500 dark:text-ink-400">
-              {clearedSpan >= 9
-                ? 'Exceptional — well past the usual 7±2 limit.'
-                : clearedSpan >= 7
-                  ? 'Solid — around the top of the normal range.'
-                  : 'Keep chunking the digits into groups to push further.'}
-            </p>
+            <ScoreMeaning moduleId="number-memory" score={finalScore} />
           </Panel>
           <div className="flex justify-center">
             <Button onClick={begin}>Try again</Button>

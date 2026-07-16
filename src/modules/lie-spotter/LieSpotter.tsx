@@ -6,11 +6,13 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, ScoreBanner, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, sample } from '../../lib/utils';
 import { LIE_SCENARIOS, LieScenario } from './data';
 
 const META = getModule('lie-spotter')!;
-const ROUND_SIZE = 6;
+const ROUND_SIZE = 8;
 type Phase = 'idle' | 'play' | 'result';
 
 export default function LieSpotter() {
@@ -41,7 +43,7 @@ export default function LieSpotter() {
 
   function next() {
     if (index + 1 >= queue.length) {
-      const score = Math.round((correct / queue.length) * 100);
+      const score = normalizeScore('lie-spotter', correct / queue.length);
       recordSession('lie-spotter', score, Date.now() - startedAt, { round: queue.length });
       setPhase('result');
       return;
@@ -50,7 +52,7 @@ export default function LieSpotter() {
     setPicked(null);
   }
 
-  const finalScore = queue.length ? Math.round((correct / queue.length) * 100) : 0;
+  const finalScore = queue.length ? normalizeScore('lie-spotter', correct / queue.length) : 0;
   const gotItRight = picked !== null && picked === current?.lie;
 
   return (
@@ -146,8 +148,9 @@ export default function LieSpotter() {
               score={finalScore}
               detail={<Stat value={`${correct}/${queue.length}`} label="lies spotted" />}
             />
-            <p className="mt-4 text-center text-sm text-ink-500 dark:text-ink-400">
-              {finalScore >= 80
+            <ScoreMeaning moduleId="lie-spotter" score={finalScore} />
+            <p className="mt-3 text-center text-sm text-ink-500 dark:text-ink-400">
+              {finalScore >= 72
                 ? 'A sharp ear for verbal leakage.'
                 : 'Watch for distancing language, over-precision, and unprompted honesty claims.'}
             </p>

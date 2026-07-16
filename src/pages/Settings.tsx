@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppState';
 import { Button, Panel } from '../components/ui';
 import { exportData } from '../lib/storage';
-import { overallStats } from '../lib/stats';
 
 export default function Settings() {
   const { data, setTheme, resetProgress, importJSON } = useApp();
   const fileRef = useRef<HTMLInputElement>(null);
   const [confirmReset, setConfirmReset] = useState(false);
   const [message, setMessage] = useState<{ kind: 'ok' | 'err'; text: string } | null>(null);
-  const stats = overallStats(data);
 
   function download() {
     const blob = new Blob([exportData(data)], { type: 'application/json' });
@@ -94,9 +92,8 @@ export default function Settings() {
       <Panel className="mb-6 p-5">
         <h2 className="mb-1 font-serif text-lg">Your data</h2>
         <p className="mb-4 text-sm text-ink-500 dark:text-ink-400">
-          Everything is stored only in this browser ({stats.totalSessions} sessions,{' '}
-          {data.predictions.length} predictions, {data.palaces.length} palaces). Export a backup or
-          move it to another device.
+          Everything is stored only in this browser ({data.predictions.length} predictions,{' '}
+          {data.palaces.length} palaces). Export a backup or move it to another device.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button onClick={download}>⬇ Export JSON</Button>

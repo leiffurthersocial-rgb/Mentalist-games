@@ -8,6 +8,7 @@ import { Button, Panel, Pill, Stat } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
 import { brierLabel, brierScore, calibrationBuckets } from '../../lib/stats';
+import { normalizeScore } from '../../lib/scoring';
 import { cx, dayKey, formatDate, uid } from '../../lib/utils';
 import { Prediction } from '../../types';
 import { CalibrationChart } from './CalibrationChart';
@@ -58,7 +59,8 @@ export default function CalibrationJournal() {
     if (p) {
       const forecast = p.confidence / 100;
       const actual = outcome === 'true' ? 1 : 0;
-      const score = Math.round((1 - (forecast - actual) ** 2) * 100);
+      const brierContribution = (forecast - actual) ** 2; // lower is better
+      const score = normalizeScore('calibration-journal', brierContribution);
       recordSession('calibration-journal', score, 0, { confidence: p.confidence, outcome });
     }
   }

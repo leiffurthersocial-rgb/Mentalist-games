@@ -8,6 +8,8 @@ import { TimerRing } from '../../components/TimerRing';
 import { useApp } from '../../context/AppState';
 import { useCountdown } from '../../lib/useCountdown';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx } from '../../lib/utils';
 import { generateScene, Scene } from './scene';
 
@@ -34,7 +36,7 @@ export default function RoomRecall() {
   }
 
   const correctCount = scene.questions.filter((q, i) => answers[i] === q.answer).length;
-  const score = Math.round((correctCount / scene.questions.length) * 100);
+  const score = normalizeScore('room-recall', correctCount / scene.questions.length);
 
   function finish() {
     setPhase('result');
@@ -146,6 +148,7 @@ export default function RoomRecall() {
                 <Stat value={`${correctCount}/${scene.questions.length}`} label="correct" />
               }
             />
+            <ScoreMeaning moduleId="room-recall" score={score} />
           </Panel>
           <Panel className="p-5">
             <h3 className="mb-3 text-sm font-medium text-ink-500 dark:text-ink-400">Review</h3>

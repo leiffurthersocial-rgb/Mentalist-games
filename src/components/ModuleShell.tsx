@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { ModuleMeta } from '../types';
 import { useApp } from '../context/AppState';
 import { Panel, Pill } from './ui';
-import { formatDuration } from '../lib/utils';
 
 export function ModuleShell({
   meta,
@@ -45,13 +44,7 @@ export function ModuleShell({
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Pill tone="brass">{meta.category}</Pill>
           <Pill>Trains: {meta.skill}</Pill>
-          {progress && (
-            <>
-              <Pill tone="good">Best {progress.bestScore}</Pill>
-              <Pill>{progress.sessions} sessions</Pill>
-              <Pill>{formatDuration(progress.totalTimeMs)} practised</Pill>
-            </>
-          )}
+          {progress && <Pill tone="good">Best {progress.bestScore}</Pill>}
         </div>
 
         <button

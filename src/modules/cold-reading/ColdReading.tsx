@@ -7,11 +7,13 @@ import { ModuleShell } from '../../components/ModuleShell';
 import { Button, Panel, Pill, ScoreBanner } from '../../components/ui';
 import { useApp } from '../../context/AppState';
 import { getModule } from '../../lib/registry';
+import { normalizeScore } from '../../lib/scoring';
+import { ScoreMeaning } from '../../components/ScoreMeaning';
 import { cx, sample, shuffle } from '../../lib/utils';
 import { PROFILE_ROUNDS, ProfileRound, STATEMENTS, Statement } from './data';
 
 const META = getModule('cold-reading')!;
-const ROUND_SIZE = 8;
+const ROUND_SIZE = 10;
 type Mode = 'classify' | 'profile';
 type Phase = 'idle' | 'play' | 'result';
 
@@ -109,7 +111,7 @@ function ClassifyGame({ onDone, onExit }: { onDone: () => void; onExit: () => vo
   function next() {
     if (index + 1 >= queue.length) {
       const finalCorrect = correct;
-      const score = Math.round((finalCorrect / queue.length) * 100);
+      const score = normalizeScore('cold-reading', finalCorrect / queue.length);
       recordSession('cold-reading', score, Date.now() - startedAt, { mode: 'classify' });
       onDone();
       return;
@@ -195,7 +197,7 @@ function ProfileGame({ onDone, onExit }: { onDone: () => void; onExit: () => voi
 
   function next() {
     if (index + 1 >= queue.length) {
-      const score = Math.round((correct / queue.length) * 100);
+      const score = normalizeScore('cold-reading', correct / queue.length);
       recordSession('cold-reading', score, Date.now() - startedAt, { mode: 'profile' });
       onDone();
       return;
@@ -271,8 +273,9 @@ function FinishedPanel({ onReplay, onExit }: { onReplay: () => void; onExit: () 
       <Panel className="p-6">
         <ScoreBanner
           score={score}
-          detail={score >= 80 ? 'Sharp eye — you can feel the trick now.' : 'Keep drilling — recognition gets faster.'}
+          detail={score >= 72 ? 'Sharp eye — you can feel the trick now.' : 'Keep drilling — recognition gets faster.'}
         />
+        <ScoreMeaning moduleId="cold-reading" score={score} />
       </Panel>
       <div className="flex justify-center gap-3">
         <Button onClick={onReplay}>Play again</Button>
