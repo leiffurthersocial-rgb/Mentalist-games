@@ -27,6 +27,17 @@ export const STATEMENTS: Statement[] = [
   { text: 'You value honesty in others but have been let down by it.', barnum: true, why: 'Emotionally resonant and universally applicable.' },
   { text: 'You are allergic to penicillin.', barnum: false, why: 'A specific medical fact true for only a small fraction of people.' },
   { text: 'There is a name beginning with “J” who has been significant in your life.', barnum: true, why: 'J-names are so common this is a near-guaranteed hit.' },
+  { text: 'You keep something that belonged to someone who is no longer around.', barnum: true, why: 'Almost universal, yet it lands as a personal, poignant "hit".' },
+  { text: 'You broke your left wrist skiing in 2019.', barnum: false, why: 'A precise, datable injury false for nearly everyone.' },
+  { text: 'You sometimes rehearse conversations in your head before having them.', barnum: true, why: 'A near-universal habit dressed up as insight.' },
+  { text: 'Your first pet was a black cat named Shadow.', barnum: false, why: 'Specific name, colour, and species — checkable and usually false.' },
+  { text: 'You have a good sense of humour, though not everyone sees it.', barnum: true, why: 'Flattering and unfalsifiable — everyone believes this of themselves.' },
+  { text: 'There is a decision from your past you occasionally revisit and wonder about.', barnum: true, why: 'Regret and second-guessing are universal.' },
+  { text: 'You speak three languages fluently.', barnum: false, why: 'A specific, verifiable skill true for a minority.' },
+  { text: 'You present a calm exterior even when you feel anything but inside.', barnum: true, why: 'Nearly everyone identifies with a public/private split.' },
+  { text: 'You had exactly £4.37 in your wallet this morning.', barnum: false, why: 'Absurdly specific and false for virtually everyone.' },
+  { text: 'Travel — or the idea of it — has been on your mind lately.', barnum: true, why: 'Vague, positive, and true of most people much of the time.' },
+  { text: 'You are the eldest of four siblings.', barnum: false, why: 'A specific birth-order/family-size claim, false for most.' },
 ];
 
 // --- Mode 2: pick the highest-probability "hit" for a target profile --------
@@ -74,5 +85,32 @@ export const PROFILE_ROUNDS: ProfileRound[] = [
       { text: 'You are a retired airline pilot.', hitProbability: 'low' },
     ],
     lesson: 'Adolescent social anxiety is near-universal. The reader states a developmental near-certainty as if it were a personal revelation.',
+  },
+  {
+    profile: 'A man in a crisp new suit checking his watch outside a corporate building, phone buzzing.',
+    options: [
+      { text: 'You\'re under pressure to prove yourself to someone who outranks you.', hitProbability: 'high' },
+      { text: 'You spend your weekends restoring vintage tractors.', hitProbability: 'low' },
+      { text: 'You have never used a smartphone.', hitProbability: 'low' },
+    ],
+    lesson: 'New suit + corporate setting + anxious time-checking reads as early-career pressure. The reader names a workplace near-certainty and lets the target supply the specifics.',
+  },
+  {
+    profile: 'A woman browsing a bookshop\'s self-help section, holding a journal and a coffee.',
+    options: [
+      { text: 'You\'re in the middle of trying to change a habit or a chapter of your life.', hitProbability: 'high' },
+      { text: 'You are a professional deep-sea welder.', hitProbability: 'low' },
+      { text: 'You have recently inherited a castle.', hitProbability: 'low' },
+    ],
+    lesson: 'The section she\'s browsing is the clue. "Changing a chapter" is almost tautologically true of a self-help browser — context does the reading for you.',
+  },
+  {
+    profile: 'An older man at a war-memorial service, medals on his chest, standing very straight.',
+    options: [
+      { text: 'You carry the memory of people who didn\'t come home with you.', hitProbability: 'high' },
+      { text: 'You are training to become a professional gamer.', hitProbability: 'low' },
+      { text: 'You have never left your home town.', hitProbability: 'medium' },
+    ],
+    lesson: 'The setting and medals make loss and comradeship overwhelmingly likely. Emotionally-loaded context gives the reader a near-guaranteed, moving "hit".',
   },
 ];

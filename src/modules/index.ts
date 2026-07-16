@@ -16,4 +16,9 @@ export const MODULE_COMPONENTS: Record<ModuleId, ModuleComponent> = {
   'cold-reading': lazy(() => import('./cold-reading/ColdReading')),
   'abductive-puzzles': lazy(() => import('./abductive-puzzles/AbductivePuzzles')),
   'deduction-drills': lazy(() => import('./deduction-drills/DeductionDrills')),
+  'number-memory': lazy(() => import('./number-memory/NumberMemory')),
+  'speed-matrix': lazy(() => import('./speed-matrix/SpeedMatrix')),
+  'fermi-estimation': lazy(() => import('./fermi-estimation/FermiEstimation')),
+  'lie-spotter': lazy(() => import('./lie-spotter/LieSpotter')),
+  'pattern-sequences': lazy(() => import('./pattern-sequences/PatternSequences')),
 };

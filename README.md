@@ -28,11 +28,17 @@ Each module maps to a genuine, transferable skill:
 | 🔮 **Cold Reading Studio** | Recognising Barnum statements & persuasion tricks |
 | 🧩 **Abductive Puzzles** | Hypothesis generation ("don't fall for your first theory") |
 | 🕵️ **Deduction Drills** | Evidence-based inference vs. guessing |
+| 🔢 **Number Memory** | Digit span & verbal working memory |
+| 🔲 **Speed Matrix** | Spatial working memory & rapid encoding (chimp test) |
+| 📐 **Fermi Estimation** | Quantitative estimation & interval calibration |
+| 🤥 **Lie Spotter** | Statement analysis & verbal deception cues |
+| 🧮 **Pattern Sequences** | Inductive reasoning & rule inference |
 
 Every module carries a short **"why this works"** note and a recommended book
 (Konnikova's *Mastermind*, Foer's *Moonwalking with Einstein*, Tetlock's
 *Superforecasting*, Kahneman's *Thinking, Fast and Slow*, Ekman's *Emotions
-Revealed*, Rowland's cold-reading book, and more).
+Revealed*, Hubbard's *How to Measure Anything*, Meyer's *Liespotting*,
+Rowland's cold-reading book, and more).
 
 ### The centrepiece: the Calibration Journal
 
@@ -47,7 +53,7 @@ separates good forecasters from confident ones.
 
 ## Features
 
-- **8 fully-playable modules**, each seeded with content so there's zero setup.
+- **13 fully-playable modules**, each seeded with content so there's zero setup.
 - **Scoring, best scores, and per-emotion / calibration breakdowns.**
 - **Daily streak system** 🔥 and a **daily routine** that queues one short session
   from each core skill.

@@ -17,8 +17,8 @@ export default function Home() {
           Train like a mentalist
         </h1>
         <p className="mx-auto mt-2 max-w-xl text-sm text-ink-500 dark:text-ink-400">
-          Eight drills for observation, memory, calibrated reasoning, and reading people — the real
-          skills behind the mind-reading act. A quiet study, not an arcade.
+          Thirteen drills for observation, memory, calibrated reasoning, and reading people — the
+          real skills behind the mind-reading act. A quiet study, not an arcade.
         </p>
       </section>
 

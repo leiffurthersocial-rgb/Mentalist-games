@@ -20,6 +20,7 @@ const LEVELS = [
   { name: 'Steady', count: 12, study: 25 },
   { name: 'Sharp', count: 16, study: 18 },
   { name: 'Elite', count: 20, study: 12 },
+  { name: 'Master', count: 24, study: 8 },
 ];
 
 export default function KimsGame() {
@@ -83,7 +84,7 @@ export default function KimsGame() {
         <div className="space-y-6">
           <Panel className="p-5">
             <h3 className="mb-3 font-serif text-lg">Choose a difficulty</h3>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
               {LEVELS.map((l, i) => (
                 <button
                   key={l.name}

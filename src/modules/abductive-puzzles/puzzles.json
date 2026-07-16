@@ -185,5 +185,115 @@
     ],
     "best": "The baby is unwell (a fever), and lethargy from illness is being mistaken for contentment — the warmth is the tell.",
     "hint": "Unusual calm plus warmth can mean illness, not happiness."
+  },
+  {
+    "id": "empty-elevator-button",
+    "title": "The Vanishing Regular",
+    "facts": [
+      "A café's most loyal regular, there every morning for years, suddenly stops coming.",
+      "No goodbye, no explanation.",
+      "A week later a bunch of flowers appears taped to their usual chair."
+    ],
+    "best": "The regular has died, and other patrons or staff who knew them left the flowers as a memorial at their seat.",
+    "hint": "Who leaves flowers at an empty chair, and why?"
+  },
+  {
+    "id": "warm-hood-cold-day",
+    "title": "The Warm Bonnet",
+    "facts": [
+      "A car reported as parked 'all night' has a warm bonnet at 6am.",
+      "Frost covers every other vehicle on the street.",
+      "The owner insists they haven't driven since yesterday evening."
+    ],
+    "best": "The car was driven within the last hour or two — the owner is lying or mistaken. Engine warmth and absent frost can't survive a full cold night.",
+    "hint": "Physics contradicts the owner's timeline."
+  },
+  {
+    "id": "three-clocks",
+    "title": "The Disagreeing Watches",
+    "facts": [
+      "A careful collector's three antique watches each show a wildly different time.",
+      "All three are wound and ticking.",
+      "He swears he set them together last week."
+    ],
+    "best": "The watches simply run at different rates (old mechanical movements drift); a week of divergence is expected, not evidence of tampering.",
+    "hint": "Old mechanisms don't keep perfect time — a week compounds the drift."
+  },
+  {
+    "id": "dry-patch-rain",
+    "title": "The Dry Rectangle",
+    "facts": [
+      "After heavy overnight rain, the whole driveway is wet except one dry rectangle.",
+      "The rectangle is about the size of a car.",
+      "The household's second car is missing."
+    ],
+    "best": "A car sat over that spot during the rain, shielding it, and was driven away after the rain stopped — hence the dry rectangle and the missing vehicle.",
+    "hint": "What object, now gone, could have kept that exact shape dry?"
+  },
+  {
+    "id": "silent-alarm",
+    "title": "The Alarm That Didn't Ring",
+    "facts": [
+      "A reliably punctual worker misses an important morning meeting.",
+      "Their phone alarm never went off.",
+      "The phone is fully charged but shows the wrong time — an hour slow."
+    ],
+    "best": "A timezone or daylight-saving change (or a failed automatic clock update) left the phone an hour behind, so the alarm fired an hour 'late' — after the meeting.",
+    "hint": "The clock being exactly an hour off is the whole story."
+  },
+  {
+    "id": "fresh-flowers-closed-shop",
+    "title": "The Tended Grave",
+    "facts": [
+      "An old grave that no one visits always has fresh flowers.",
+      "The deceased has no known living relatives.",
+      "The cemetery caretaker didn't place them."
+    ],
+    "best": "Someone with an unrecorded connection — an old friend, a secret relative, or a person the deceased once helped — visits quietly and tends it.",
+    "hint": "'No known relatives' isn't the same as 'no one who cared'."
+  },
+  {
+    "id": "wet-newspaper-inside",
+    "title": "The Soggy Post",
+    "facts": [
+      "The morning newspaper is soaking wet, though it sat inside the porch.",
+      "It didn't rain overnight.",
+      "The dog is also unusually damp."
+    ],
+    "best": "The dog fetched the paper (or knocked over a water bowl onto it) — the shared dampness links the two, not weather.",
+    "hint": "What links the wet paper and the wet dog?"
+  },
+  {
+    "id": "identical-orders",
+    "title": "The Copied Order",
+    "facts": [
+      "A diner always orders exactly what the person before them ordered.",
+      "They never look at the menu.",
+      "They ask the waiter to 'point out' the specials."
+    ],
+    "best": "The diner cannot read the menu — illiteracy, a language barrier, or poor eyesight — so they copy others and rely on being shown options.",
+    "hint": "Copying and 'point it out' both avoid the same task."
+  },
+  {
+    "id": "locked-from-inside",
+    "title": "The Bolted Room",
+    "facts": [
+      "A room is found bolted from the inside, yet empty.",
+      "The only window is painted shut.",
+      "A melting pile of snow sits beneath the ceiling hatch."
+    ],
+    "best": "The occupant left through the ceiling hatch, and snow fell in (or was tracked up) as they exited above — the bolt was a misdirection, the hatch the real exit.",
+    "hint": "If the door and window are ruled out, look up."
+  },
+  {
+    "id": "battery-drain",
+    "title": "The Overnight Drain",
+    "facts": [
+      "A phone left untouched overnight is completely dead by morning.",
+      "It was at 80% at bedtime and not used.",
+      "It feels slightly warm."
+    ],
+    "best": "A background process, a stuck app, or poor signal made the phone work hard all night (the warmth is the tell), draining the battery despite no active use.",
+    "hint": "A warm, drained, 'unused' phone was actually busy the whole time."
   }
 ]

@@ -14,7 +14,12 @@ export type ModuleId =
   | 'emotion-reader'
   | 'cold-reading'
   | 'abductive-puzzles'
-  | 'deduction-drills';
+  | 'deduction-drills'
+  | 'number-memory'
+  | 'speed-matrix'
+  | 'fermi-estimation'
+  | 'lie-spotter'
+  | 'pattern-sequences';
 
 /** One completed practice attempt for any module. */
 export interface SessionRecord {
