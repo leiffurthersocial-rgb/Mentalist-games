@@ -1,0 +1,189 @@
+[
+  {
+    "id": "melting-snowman",
+    "title": "The Locked Study",
+    "facts": [
+      "A man is found dead alone in his study, locked from the inside.",
+      "There is a small puddle of water on the floor near the body.",
+      "The window is open, and it is winter."
+    ],
+    "best": "He was killed with an icicle (or an ice weapon) that melted, leaving only water and no visible weapon. The open winter window kept the ice frozen until use.",
+    "hint": "What weapon leaves a puddle but no weapon?"
+  },
+  {
+    "id": "restaurant-albatross",
+    "title": "The Albatross Soup",
+    "facts": [
+      "A man orders albatross soup at a restaurant, takes one taste, and immediately leaves and later takes his own life.",
+      "He had been shipwrecked years earlier and survived.",
+      "During the shipwreck he was told he was eating albatross."
+    ],
+    "best": "During the shipwreck he was fed human flesh but told it was albatross. Tasting real albatross now, he realises the earlier meal was a lie — and what he actually ate.",
+    "hint": "The real albatross tastes nothing like what he was served on the raft."
+  },
+  {
+    "id": "elevator-man",
+    "title": "The Short Man's Elevator",
+    "facts": [
+      "A man living on the 10th floor takes the elevator down every morning.",
+      "Coming home, he rides only to the 7th floor and walks the rest — except on rainy days, when he rides all the way up.",
+      "He is otherwise healthy."
+    ],
+    "best": "He is very short and can only reach the button for the 7th floor. On rainy days he has an umbrella to press the 10th-floor button.",
+    "hint": "What could he reach on a rainy day that he can't otherwise?"
+  },
+  {
+    "id": "dead-crops",
+    "title": "The Overnight Blight",
+    "facts": [
+      "A farmer's field of crops is healthy one evening and dead the next morning.",
+      "Neighbouring fields are untouched.",
+      "There was no frost and no visible pest."
+    ],
+    "best": "A localised chemical spill or misapplied herbicide (e.g. spray drift from the farmer's own tank, or contaminated irrigation water) hit only this field.",
+    "hint": "What single thing touches only this field and not the neighbours'?"
+  },
+  {
+    "id": "empty-boat",
+    "title": "The Music Box",
+    "facts": [
+      "A woman hears a familiar tune, then screams and collapses in grief.",
+      "She had not heard that tune in years.",
+      "Her twin died at sea long ago."
+    ],
+    "best": "The tune was one only she and her twin knew; hearing it means someone who knew her twin — or her twin, thought dead — is nearby, forcing a flood of grief/recognition.",
+    "hint": "Who else could possibly know that specific tune?"
+  },
+  {
+    "id": "sand-shoes",
+    "title": "Sand in the City",
+    "facts": [
+      "A colleague arrives at a downtown office with fine sand in their shoes.",
+      "There is no beach or construction site nearby.",
+      "They claim they came straight from home."
+    ],
+    "best": "They did not come straight from home — they detoured somewhere with sand (a volleyball court, a children's sandbox, a gym long-jump pit, or travelled from elsewhere).",
+    "hint": "The sand contradicts the 'straight from home' claim."
+  },
+  {
+    "id": "cold-coffee",
+    "title": "The Untouched Coffee",
+    "facts": [
+      "A full, cold cup of coffee sits on a desk at 9am.",
+      "The owner is known to drink it hot, first thing, every day.",
+      "Their coat is on the chair and their car is in the lot."
+    ],
+    "best": "They arrived, poured the coffee, then were interrupted or left urgently before drinking it — suggesting something unexpected pulled them away right after arrival.",
+    "hint": "The coffee was poured but never drunk — when did they leave?"
+  },
+  {
+    "id": "barking-dog",
+    "title": "The Dog That Didn't Bark",
+    "facts": [
+      "A guard dog did not bark during a nighttime theft.",
+      "The dog barks at every stranger.",
+      "Nothing was forced open."
+    ],
+    "best": "The thief was someone the dog knew — an insider or the owner — not a stranger.",
+    "hint": "Silence is the clue: the intruder wasn't a stranger."
+  },
+  {
+    "id": "wet-umbrella",
+    "title": "The Dry Umbrella",
+    "facts": [
+      "A visitor arrives soaked from head to toe.",
+      "They are carrying an umbrella that is completely dry.",
+      "It has been raining hard all day."
+    ],
+    "best": "The umbrella is broken or they forgot to open it — or it isn't theirs and they just picked it up indoors. It provided no protection, hence they're soaked.",
+    "hint": "A dry umbrella in the rain means it was never opened."
+  },
+  {
+    "id": "twins-birthday",
+    "title": "The Birthday Order",
+    "facts": [
+      "Two babies are born to the same mother, on the same day, in the same year.",
+      "They are not twins.",
+      "This is not a mistake."
+    ],
+    "best": "They are two of a set of triplets (or more) — so 'not twins' is literally true.",
+    "hint": "Who says there were only two babies?"
+  },
+  {
+    "id": "footprints-one-way",
+    "title": "One Set of Footprints",
+    "facts": [
+      "Fresh footprints in the snow lead up to a cabin but none lead away.",
+      "The cabin is empty.",
+      "It snowed lightly an hour ago."
+    ],
+    "best": "The person walked in backwards (to fake a departure), or left before the last snowfall covered the outbound tracks, or left by another exit/vehicle.",
+    "hint": "Tracks can be faked, covered, or the exit was elsewhere."
+  },
+  {
+    "id": "silent-phone",
+    "title": "The Unread Messages",
+    "facts": [
+      "A very responsive friend hasn't replied to messages in three days.",
+      "The messages show as delivered but not read.",
+      "Their social accounts are also silent."
+    ],
+    "best": "Their phone is off or lost, or they are somewhere without signal/access (travel, hospital, retreat) — the 'delivered but unread' pattern points to no device access, not deliberate silence.",
+    "hint": "Delivered-but-unread across everything suggests no access, not avoidance."
+  },
+  {
+    "id": "melted-ice-cream",
+    "title": "The Melted Groceries",
+    "facts": [
+      "A neighbour's groceries, including ice cream, sit melted on their porch.",
+      "They are a reliable, organised person.",
+      "Their car is gone."
+    ],
+    "best": "They set the bags down and were called away suddenly (an emergency) before bringing them in, leaving in the car in a hurry.",
+    "hint": "An organised person only abandons ice cream under urgency."
+  },
+  {
+    "id": "wrong-time-clock",
+    "title": "The Stopped Clock",
+    "facts": [
+      "Every clock in the house shows a different, wrong time.",
+      "The occupant is meticulous.",
+      "There was a storm last night."
+    ],
+    "best": "A power cut during the storm reset the electric clocks, and they were restarted at different moments — so each shows a different offset.",
+    "hint": "What single event resets clocks to blink at different times?"
+  },
+  {
+    "id": "restaurant-tip",
+    "title": "The Generous Stranger",
+    "facts": [
+      "A regular customer who always tips modestly suddenly leaves a huge tip and never returns.",
+      "They seemed calm and happy that day.",
+      "They asked the server's name for the first time."
+    ],
+    "best": "They were saying goodbye — moving away, retiring, or facing a life change — and chose to leave a memorable, grateful gesture on their last visit.",
+    "hint": "A one-time huge tip plus 'never returns' reads as a farewell."
+  },
+  {
+    "id": "locked-bike",
+    "title": "The Frame Without a Bike",
+    "facts": [
+      "A bike lock is still locked to a rack, but the bike is gone.",
+      "The lock is undamaged.",
+      "Only the frame's wheels remain, locked in place."
+    ],
+    "best": "The thief undid the quick-release and took the frame/body, leaving the wheels locked — or the owner locked only a wheel, not the frame. The lock secured the wrong part.",
+    "hint": "What was actually locked — the frame, or just a wheel?"
+  },
+  {
+    "id": "quiet-baby",
+    "title": "The Content Infant",
+    "facts": [
+      "A usually fussy baby is suddenly calm and quiet for hours.",
+      "The parents didn't change anything they know of.",
+      "The baby feels slightly warm."
+    ],
+    "best": "The baby is unwell (a fever), and lethargy from illness is being mistaken for contentment — the warmth is the tell.",
+    "hint": "Unusual calm plus warmth can mean illness, not happiness."
+  }
+]
